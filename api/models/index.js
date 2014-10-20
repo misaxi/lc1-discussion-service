@@ -19,7 +19,7 @@ module.exports = function(config) {
     '/' + config.get('app.pg.database');
   }
 
-  var sequelize = new Sequelize(postgresurl);
+  var sequelize = new Sequelize(postgresurl, { native: true });
   var db = {};
 
   // Add JSON and JSONB data type to Sequelize
