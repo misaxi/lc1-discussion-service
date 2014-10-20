@@ -1,5 +1,5 @@
 app:
-  pgURL: 'postgres://bvvlrxtlondxai:ApbcroxVZjWX0kzYBlEOhcHA4P@ec2-54-235-250-41.compute-1.amazonaws.com:5432/d8lfu06ln72uv1'
+  pgURL: 'postgres://bvvlrxtlondxai:ApbcroxVZjWX0kzYBlEOhcHA4P@ec2-54-235-250-41.compute-1.amazonaws.com:5432/d8lfu06ln72uv1?ssl=true'
   pg:
     database:
     username:
