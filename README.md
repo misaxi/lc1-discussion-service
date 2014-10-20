@@ -6,7 +6,7 @@ Travis Ci:
 
 Wercker:
 
-[![wercker status](https://app.wercker.com/status/390f3f96c8d649ec41a49f9c486c512f/m "wercker status")](https://app.wercker.com/project/bykey/390f3f96c8d649ec41a49f9c486c512f)
+[![wercker status](https://app.wercker.com/status/4cb9c0baf2652f5f848a6c410e19f0c1/m "wercker status")](https://app.wercker.com/project/bykey/390f3f96c8d649ec41a49f9c486c512f)
 
 ## serenity-discussion-api is a Discussion API Service
 
