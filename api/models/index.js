@@ -7,17 +7,21 @@ module.exports = function(config) {
   var _ = require('lodash');
 
   // reading config.
-  var postgresurl;
+  var postgresurl = process.env.DATABASE_URL;
 
-  if (config.has('app.pgURL')) {
-    postgresurl = config.get('app.pgURL');
-  } else {
-    postgresurl =  'postgres://' + config.get('app.pg.username') +
-    ':' + config.get('app.pg.password') +
-    '@' + config.get('app.pg.host') +
-    ':' + config.get('app.pg.port') +
-    '/' + config.get('app.pg.database');
+  if (!postgresurl) { // resolve the url from env variable defined in wercker first, then the local config as failover
+    if (config.has('app.pgURL')) {
+        postgresurl = config.get('app.pgURL');
+    } else {
+        postgresurl =  'postgres://' + config.get('app.pg.username') +
+        ':' + config.get('app.pg.password') +
+        '@' + config.get('app.pg.host') +
+        ':' + config.get('app.pg.port') +
+        '/' + config.get('app.pg.database');
+    }
   }
+
+  console.log(postgresurl);
 
   var sequelize = new Sequelize(postgresurl, { native: true });
   var db = {};

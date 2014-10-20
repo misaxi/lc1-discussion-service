@@ -5,7 +5,7 @@ var paths = {
 };
 
 module.exports = function(grunt) {
-  var databaseUrl;
+  var databaseUrl = process.env.DATABASE_URL;
 
   var re;
   var swagger;
@@ -17,16 +17,19 @@ module.exports = function(grunt) {
 
   var envConfig = require('config');
 
-
-  if (envConfig.has('app.pgURL')) {
-    databaseUrl = envConfig.get('app.pgURL');
-  } else {
-    databaseUrl =  'postgres://' + envConfig.get('app.pg.username') +
-    ':' + envConfig.get('app.pg.password') +
-    '@' + envConfig.get('app.pg.host') +
-    ':' + envConfig.get('app.pg.port') +
-    '/' + envConfig.get('app.pg.database');
+  if (!databaseUrl) {   // try to use env variable configured in wercker, then fail over to user local file configuration
+    if (envConfig.has('app.pgURL')) {
+        databaseUrl = envConfig.get('app.pgURL');
+    } else {
+        databaseUrl =  'postgres://' + envConfig.get('app.pg.username') +
+        ':' + envConfig.get('app.pg.password') +
+        '@' + envConfig.get('app.pg.host') +
+        ':' + envConfig.get('app.pg.port') +
+        '/' + envConfig.get('app.pg.database');
+    }
   }
+
+  console.log(databaseUrl);
 
   // Project Configuration
   grunt.initConfig({
