@@ -10,3 +10,4 @@ build:
     - grunt:
         tasks: validate
         verbose: true
+
